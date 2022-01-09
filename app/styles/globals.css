@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html,
 body {
   padding: 0;
@@ -13,4 +17,42 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+.main {
+  @apply bg-[#fafafb] min-h-screen flex justify-center items-center;
+}
+
+.box {
+  @apply bg-[#ffffff] w-1/3 h-[550px] text-center p-[40px] rounded-lg shadow-2xl;
+}
+
+.image {
+  @apply bg-[#f6f8fb] text-center mx-auto h-[250px] p-[2rem] rounded-lg;
+  text-align: center;
+  position: relative;
+}
+
+.image::before {
+  @apply rounded-lg;
+  content: '';
+  background-image: linear-gradient(
+      to right,
+      #97bef4,
+      #97bef4 10px,
+      transparent 10px,
+      transparent 20px
+    ),
+    linear-gradient(to right, #97bef4, #97bef4 10px, transparent 10px, transparent 20px),
+    linear-gradient(to bottom, #97bef4, #97bef4 10px, transparent 10px, transparent 20px),
+    linear-gradient(to bottom, #97bef4, #97bef4 10px, transparent 10px, transparent 20px);
+  background-size: 20px 2px, 20px 2px, 2px 20px, 2px 20px;
+  background-position: left top, left bottom, left top, right top;
+  background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  pointer-events: none;
 }
