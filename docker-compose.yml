@@ -1,10 +1,25 @@
-version: "3.8"
+# ファイルフォーマットのバージョン。
+# ファイル作成時点で3が最新かつ安定。
+version: "3.9"
 
+# サービスという単位でコンテナを管理。
 services:
   db:
-    build: .
+    # localhostの5432番ポート宛ての通信を、コンテナの5432番ポートに転送。
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
       - 5432:5432
     environment:
-      - POSTGRES_USER=${POSTGRES_USER}
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      POSTGRES_USER: image-uploader
+      POSTGRES_PASSWORD: image-uploader
+      POSTGRES_DB: image-uploader
+      # 本来、PostgreSQLのデータは/var/lib/postgresql/data直下に作成されるが、
+      # Dockerdaで/var/lib/postgresql/dataにデータを作成しようとすると失敗する。
+      # そのため、アドホックではあるがデータ作成ディレクトリを1層深くしている。
+      PGDATA: /var/lib/postgresql/data/pgdata
+    # ホストOS(PC)上にdbボリュームを定義して、
+    # PostgresSQLのコンテナの/var/lib/postgresql/data/pgdataというディレクトリを、dbボリュームにマウント。
+    volumes:
+      - ./db:/var/lib/postgresql/data
