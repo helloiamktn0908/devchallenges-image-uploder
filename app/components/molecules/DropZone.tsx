@@ -7,7 +7,7 @@ export const DropZone = () => {
   return (
     <div className='image'>
       <Image src={src} alt='' />
-      <BaseText text='Drag & Drop your image here' />
+      <BaseText margin='2rem' text='Drag & Drop your image here' />
     </div>
   );
 };

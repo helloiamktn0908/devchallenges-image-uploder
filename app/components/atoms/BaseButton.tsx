@@ -7,7 +7,7 @@ type Props = {
 
 export const BaseButton: VFC<Props> = ({ text, onClick }) => {
   return (
-    <button className='button' onClick={onClick}>
+    <button className='py-[0.5rem] px-[1rem] text-white bg-[#2f80ed] rounded-lg' onClick={onClick}>
       {text}
     </button>
   );

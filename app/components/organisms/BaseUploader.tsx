@@ -17,9 +17,9 @@ export const BaseUploader = () => {
   return (
     <div className='box'>
       <Title text='Upload your image' />
-      <BaseText text='File shoudl be Jpeg,Png...' />
+      <BaseText margin='1.5rem' text='File shoudl be Jpeg,Png...' />
       <DropZone />
-      <BaseText text='Or' />
+      <BaseText margin='1.5rem' text='Or' />
       <BaseButton text='Choose a file' onClick={upload} />
     </div>
   );
